@@ -12,6 +12,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import java.util.Arrays;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button send = (Button) findViewById(R.id.send);
+        Button sort = (Button) findViewById(R.id.sort);
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,6 +31,43 @@ public class MainActivity extends AppCompatActivity {
                 socket s = new socket();
                 new Thread(s).start();
             }});
+
+        sort.setOnClickListener(new View.OnClickListener() {
+            EditText mnr = (EditText) findViewById(R.id.mnr);
+            TextView response = (TextView) findViewById(R.id.response);
+            @Override
+            public void onClick(View v) {
+                char[] chars = mnr.getText().toString().toCharArray();
+                int [] ints = new int[chars.length];
+                boolean noNum = true;
+                String sorted = "";
+
+                Arrays.sort(chars);
+
+                for (int i = 0; i < chars.length; i++) {
+                    int num = Integer.parseInt(String.valueOf(chars[i]));
+                    System.out.println(num);
+                    if (num > 1) {
+                        for (int j = 2; j <= num / 2; j++) {
+                            if (num % j == 0) {
+                                sorted += num;
+                                noNum = false;
+                                break;
+                            }
+                        }
+                    } else {
+                        sorted += num;
+                        noNum = false;
+                    }
+                }
+                if(noNum == false) {
+                    response.setText(sorted);
+                }else{
+                    response.setText("Only prime numbers found...");
+                }
+            }
+        });
+
 
     }
     class socket implements Runnable{

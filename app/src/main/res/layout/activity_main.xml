@@ -13,16 +13,13 @@
         android:id="@+id/response"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="117dp"
         android:maxWidth="310dp"
         android:text="Antwort von Server"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.46" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mnr" />
 
     <TextView
         android:id="@+id/textView"
@@ -51,14 +48,21 @@
         android:id="@+id/send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="63dp"
-        android:layout_marginEnd="63dp"
-        android:layout_marginRight="63dp"
-        android:layout_marginBottom="159dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginBottom="153dp"
         android:text="ABSCHIKEN"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/mnr" />
+        app:layout_constraintEnd_toStartOf="@+id/sort"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/sort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SORTIEREN"
+        app:layout_constraintBaseline_toBaselineOf="@+id/send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/send" />
 
 </android.support.constraint.ConstraintLayout>
